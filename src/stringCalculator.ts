@@ -3,7 +3,7 @@ export class StringCalculator {
     if (!numbers) return 0;
 
     let delimiter: string | null = null;
-    let numsSection = numbers;
+    let nums = numbers;
 
     // Handle custom delimiter at beginning: //{delimiter}\n
     if (numbers.startsWith("//")) {
@@ -12,19 +12,19 @@ export class StringCalculator {
         throw new Error("Invalid input: missing newline after delimiter declaration");
       }
       delimiter = numbers.substring(2, headerEnd);
-      numsSection = numbers.substring(headerEnd + 1);
+      nums = numbers.substring(headerEnd + 1);
     }
 
     let tokens: string[];
     if (delimiter) {
-      tokens = numsSection.split(delimiter);
+      tokens = nums.split(delimiter);
     } else {
       // Default delimiters: comma or newline
-      tokens = numsSection.split(/,|\n/);
+      tokens = nums.split(/,|\n/);
     }
 
     const negatives: number[] = [];
-    const nums: number[] = [];
+    const numerals: number[] = [];
 
     for (const token of tokens.map(t => t.trim()).filter(t => t.length > 0)) {
       const n = parseInt(token, 10);
@@ -34,14 +34,14 @@ export class StringCalculator {
       if (n < 0) {
         negatives.push(n);
       }
-      nums.push(n);
+      numerals.push(n);
     }
 
     if (negatives.length > 0) {
       throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
 
-    return nums.reduce((sum, n) => sum + n, 0);
+    return numerals.reduce((sum, n) => sum + n, 0);
   }
 }
 
