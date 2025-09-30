@@ -15,4 +15,9 @@ describe('StringCalculator', () => {
     const calc = new StringCalculator();
     expect(calc.add('1,5')).toBe(6);
     });
+
+  it('returns sum for many numbers', () => {
+    const calc = new StringCalculator();
+    expect(calc.add('1,2,3,4,10')).toBe(20);
+    });
 });
