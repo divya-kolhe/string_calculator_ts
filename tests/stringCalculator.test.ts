@@ -30,4 +30,13 @@ describe('StringCalculator', () => {
     const calc = new StringCalculator();
     expect(calc.add('//;\n1;2')).toBe(3);
     });
+  it('throws error on single negative number', () => {
+    const calc = new StringCalculator();
+    expect(() => calc.add('-1')).toThrow('negative numbers not allowed -1');
+    });
+    
+    it('throws error with all negatives listed', () => {
+    const calc = new StringCalculator();
+    expect(() => calc.add('-1,2,-3')).toThrow('negative numbers not allowed -1,-3');
+    });
 });
