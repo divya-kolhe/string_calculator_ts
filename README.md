@@ -1,4 +1,4 @@
-# String Calculator (Incubyte TDD Kata) – TypeScript
+# String Calculator (Incubyte TDD) – TypeScript
 
 ### Features
 - Empty string → `0`
