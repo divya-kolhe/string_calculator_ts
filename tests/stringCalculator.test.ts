@@ -45,4 +45,19 @@ describe('StringCalculator', () => {
       expect(calc.add('2,1001')).toBe(2);
       expect(calc.add('1000,1')).toBe(1001); // 1000 is included, 1001 is ignored
       });
+
+    it('supports delimiters of any length', () => {
+      const calc = new StringCalculator();
+      expect(calc.add('//[***]\n1***2***3')).toBe(6);
+      });
+
+    it('supports multiple delimiters', () => {
+      const calc = new StringCalculator();
+      expect(calc.add('//[*][%]\n1*2%3')).toBe(6);
+      });
+
+    it('supports multiple delimiters with length > 1', () => {
+      const calc = new StringCalculator();
+      expect(calc.add('//[***][%%]\n1***2%%3')).toBe(6);
+      });
 });
