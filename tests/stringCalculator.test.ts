@@ -20,4 +20,9 @@ describe('StringCalculator', () => {
     const calc = new StringCalculator();
     expect(calc.add('1,2,3,4,10')).toBe(20);
     });
+
+  it('handles newlines between numbers', () => {
+    const calc = new StringCalculator();
+    expect(calc.add('1\n2,3')).toBe(6);
+    });
 });
