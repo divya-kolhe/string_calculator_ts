@@ -5,4 +5,9 @@ describe('StringCalculator', () => {
   const calc = new StringCalculator();
   expect(calc.add('')).toBe(0);
   });
-  });
+
+  it('returns the number itself for single input', () => {
+    const calc = new StringCalculator();
+    expect(calc.add('1')).toBe(1);
+    });
+});
