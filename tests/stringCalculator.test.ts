@@ -39,4 +39,10 @@ describe('StringCalculator', () => {
     const calc = new StringCalculator();
     expect(() => calc.add('-1,2,-3')).toThrow('negative numbers not allowed -1,-3');
     });
+
+    it('ignores numbers greater than 1000', () => {
+      const calc = new StringCalculator();
+      expect(calc.add('2,1001')).toBe(2);
+      expect(calc.add('1000,1')).toBe(1001); // 1000 is included, 1001 is ignored
+      });
 });

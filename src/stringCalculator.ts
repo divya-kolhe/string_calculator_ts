@@ -34,7 +34,9 @@ export class StringCalculator {
       if (n < 0) {
         negatives.push(n);
       }
-      numerals.push(n);
+      if (n <= 1000){
+        numerals.push(n);
+      }
     }
 
     if (negatives.length > 0) {
